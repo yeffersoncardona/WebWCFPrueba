@@ -1,0 +1,7 @@
+C:\Users\YEYO\source\repos\WcfPrueba\bin\WcfPrueba.dll.config
+C:\Users\YEYO\source\repos\WcfPrueba\bin\WcfPrueba.dll
+C:\Users\YEYO\source\repos\WcfPrueba\bin\WcfPrueba.pdb
+C:\Users\YEYO\source\repos\WcfPrueba\obj\Debug\WcfPrueba.csproj.AssemblyReference.cache
+C:\Users\YEYO\source\repos\WcfPrueba\obj\Debug\WcfPrueba.csproj.CoreCompileInputs.cache
+C:\Users\YEYO\source\repos\WcfPrueba\obj\Debug\WcfPrueba.dll
+C:\Users\YEYO\source\repos\WcfPrueba\obj\Debug\WcfPrueba.pdb
