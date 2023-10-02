@@ -139,16 +139,7 @@
     <None Include="Connected Services\BusinessServiceReference\BusinessService1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\BusinessServiceReference\BusinessService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\BusinessServiceReference\BusinessService3.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Connected Services\BusinessServiceReference\Service1.wsdl" />
-    <Content Include="Connected Services\BusinessServiceReference\webUsuarios.BusinessServiceReference.CompositeType.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <Content Include="Properties\DataSources\System.Data.DataTable.datasource" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -214,6 +205,7 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DTOS\UsuarioDTO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

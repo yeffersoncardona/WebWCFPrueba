@@ -4,8 +4,6 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:56057/BusinessService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:56057/BusinessService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:56057/BusinessService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/System.Data" />
-      <xsd:import schemaLocation="http://localhost:56057/BusinessService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/WcfPrueba" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IBusiness_GetUsuario_InputMessage">
@@ -14,20 +12,30 @@
   <wsdl:message name="IBusiness_GetUsuario_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetUsuarioResponse" />
   </wsdl:message>
-  <wsdl:message name="IBusiness_GetDataUsingDataContract_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetDataUsingDataContract" />
+  <wsdl:message name="IBusiness_CreateUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateUsuario" />
   </wsdl:message>
-  <wsdl:message name="IBusiness_GetDataUsingDataContract_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetDataUsingDataContractResponse" />
+  <wsdl:message name="IBusiness_CreateUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBusiness_GetAllUsuarios_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUsuarios" />
+  </wsdl:message>
+  <wsdl:message name="IBusiness_GetAllUsuarios_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUsuariosResponse" />
   </wsdl:message>
   <wsdl:portType name="IBusiness">
     <wsdl:operation name="GetUsuario">
       <wsdl:input wsaw:Action="http://tempuri.org/IBusiness/GetUsuario" message="tns:IBusiness_GetUsuario_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IBusiness/GetUsuarioResponse" message="tns:IBusiness_GetUsuario_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetDataUsingDataContract">
-      <wsdl:input wsaw:Action="http://tempuri.org/IBusiness/GetDataUsingDataContract" message="tns:IBusiness_GetDataUsingDataContract_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IBusiness/GetDataUsingDataContractResponse" message="tns:IBusiness_GetDataUsingDataContract_OutputMessage" />
+    <wsdl:operation name="CreateUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBusiness/CreateUsuario" message="tns:IBusiness_CreateUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBusiness/CreateUsuarioResponse" message="tns:IBusiness_CreateUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUsuarios">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBusiness/GetAllUsuarios" message="tns:IBusiness_GetAllUsuarios_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBusiness/GetAllUsuariosResponse" message="tns:IBusiness_GetAllUsuarios_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IBusiness" type="tns:IBusiness">
@@ -41,8 +49,17 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetDataUsingDataContract">
-      <soap:operation soapAction="http://tempuri.org/IBusiness/GetDataUsingDataContract" style="document" />
+    <wsdl:operation name="CreateUsuario">
+      <soap:operation soapAction="http://tempuri.org/IBusiness/CreateUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUsuarios">
+      <soap:operation soapAction="http://tempuri.org/IBusiness/GetAllUsuarios" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -9,90 +9,35 @@
 //------------------------------------------------------------------------------
 
 namespace webUsuarios.BusinessServiceReference {
-    using System.Runtime.Serialization;
-    using System;
     
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CompositeType", Namespace="http://schemas.datacontract.org/2004/07/WcfPrueba")]
-    [System.SerializableAttribute()]
-    public partial class CompositeType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool BoolValueField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string StringValueField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool BoolValue {
-            get {
-                return this.BoolValueField;
-            }
-            set {
-                if ((this.BoolValueField.Equals(value) != true)) {
-                    this.BoolValueField = value;
-                    this.RaisePropertyChanged("BoolValue");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string StringValue {
-            get {
-                return this.StringValueField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.StringValueField, value) != true)) {
-                    this.StringValueField = value;
-                    this.RaisePropertyChanged("StringValue");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="BusinessServiceReference.IBusiness")]
     public interface IBusiness {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBusiness/GetUsuario", ReplyAction="http://tempuri.org/IBusiness/GetUsuarioResponse")]
-        System.Data.DataTable GetUsuario(int value);
+        string GetUsuario(int value);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IBusiness/GetUsuario", ReplyAction="http://tempuri.org/IBusiness/GetUsuarioResponse")]
         System.IAsyncResult BeginGetUsuario(int value, System.AsyncCallback callback, object asyncState);
         
-        System.Data.DataTable EndGetUsuario(System.IAsyncResult result);
+        string EndGetUsuario(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBusiness/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IBusiness/GetDataUsingDataContractResponse")]
-        webUsuarios.BusinessServiceReference.CompositeType GetDataUsingDataContract(webUsuarios.BusinessServiceReference.CompositeType composite);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBusiness/CreateUsuario", ReplyAction="http://tempuri.org/IBusiness/CreateUsuarioResponse")]
+        string CreateUsuario(string nombre, string sexo, System.DateTime fechanacimiento);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IBusiness/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IBusiness/GetDataUsingDataContractResponse")]
-        System.IAsyncResult BeginGetDataUsingDataContract(webUsuarios.BusinessServiceReference.CompositeType composite, System.AsyncCallback callback, object asyncState);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IBusiness/CreateUsuario", ReplyAction="http://tempuri.org/IBusiness/CreateUsuarioResponse")]
+        System.IAsyncResult BeginCreateUsuario(string nombre, string sexo, System.DateTime fechanacimiento, System.AsyncCallback callback, object asyncState);
         
-        webUsuarios.BusinessServiceReference.CompositeType EndGetDataUsingDataContract(System.IAsyncResult result);
+        string EndCreateUsuario(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBusiness/GetAllUsuarios", ReplyAction="http://tempuri.org/IBusiness/GetAllUsuariosResponse")]
+        string GetAllUsuarios();
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IBusiness/GetAllUsuarios", ReplyAction="http://tempuri.org/IBusiness/GetAllUsuariosResponse")]
+        System.IAsyncResult BeginGetAllUsuarios(System.AsyncCallback callback, object asyncState);
+        
+        string EndGetAllUsuarios(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -110,29 +55,48 @@ namespace webUsuarios.BusinessServiceReference {
             this.results = results;
         }
         
-        public System.Data.DataTable Result {
+        public string Result {
             get {
                 base.RaiseExceptionIfNecessary();
-                return ((System.Data.DataTable)(this.results[0]));
+                return ((string)(this.results[0]));
             }
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class GetDataUsingDataContractCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class CreateUsuarioCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        public GetDataUsingDataContractCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        public CreateUsuarioCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
         
-        public webUsuarios.BusinessServiceReference.CompositeType Result {
+        public string Result {
             get {
                 base.RaiseExceptionIfNecessary();
-                return ((webUsuarios.BusinessServiceReference.CompositeType)(this.results[0]));
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetAllUsuariosCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetAllUsuariosCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public string Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
             }
         }
     }
@@ -147,11 +111,17 @@ namespace webUsuarios.BusinessServiceReference {
         
         private System.Threading.SendOrPostCallback onGetUsuarioCompletedDelegate;
         
-        private BeginOperationDelegate onBeginGetDataUsingDataContractDelegate;
+        private BeginOperationDelegate onBeginCreateUsuarioDelegate;
         
-        private EndOperationDelegate onEndGetDataUsingDataContractDelegate;
+        private EndOperationDelegate onEndCreateUsuarioDelegate;
         
-        private System.Threading.SendOrPostCallback onGetDataUsingDataContractCompletedDelegate;
+        private System.Threading.SendOrPostCallback onCreateUsuarioCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginGetAllUsuariosDelegate;
+        
+        private EndOperationDelegate onEndGetAllUsuariosDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetAllUsuariosCompletedDelegate;
         
         public BusinessClient() {
         }
@@ -174,9 +144,11 @@ namespace webUsuarios.BusinessServiceReference {
         
         public event System.EventHandler<GetUsuarioCompletedEventArgs> GetUsuarioCompleted;
         
-        public event System.EventHandler<GetDataUsingDataContractCompletedEventArgs> GetDataUsingDataContractCompleted;
+        public event System.EventHandler<CreateUsuarioCompletedEventArgs> CreateUsuarioCompleted;
         
-        public System.Data.DataTable GetUsuario(int value) {
+        public event System.EventHandler<GetAllUsuariosCompletedEventArgs> GetAllUsuariosCompleted;
+        
+        public string GetUsuario(int value) {
             return base.Channel.GetUsuario(value);
         }
         
@@ -186,7 +158,7 @@ namespace webUsuarios.BusinessServiceReference {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.Data.DataTable EndGetUsuario(System.IAsyncResult result) {
+        public string EndGetUsuario(System.IAsyncResult result) {
             return base.Channel.EndGetUsuario(result);
         }
         
@@ -196,7 +168,7 @@ namespace webUsuarios.BusinessServiceReference {
         }
         
         private object[] OnEndGetUsuario(System.IAsyncResult result) {
-            System.Data.DataTable retVal = this.EndGetUsuario(result);
+            string retVal = this.EndGetUsuario(result);
             return new object[] {
                     retVal};
         }
@@ -226,54 +198,106 @@ namespace webUsuarios.BusinessServiceReference {
                         value}, this.onEndGetUsuarioDelegate, this.onGetUsuarioCompletedDelegate, userState);
         }
         
-        public webUsuarios.BusinessServiceReference.CompositeType GetDataUsingDataContract(webUsuarios.BusinessServiceReference.CompositeType composite) {
-            return base.Channel.GetDataUsingDataContract(composite);
+        public string CreateUsuario(string nombre, string sexo, System.DateTime fechanacimiento) {
+            return base.Channel.CreateUsuario(nombre, sexo, fechanacimiento);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetDataUsingDataContract(webUsuarios.BusinessServiceReference.CompositeType composite, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetDataUsingDataContract(composite, callback, asyncState);
+        public System.IAsyncResult BeginCreateUsuario(string nombre, string sexo, System.DateTime fechanacimiento, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginCreateUsuario(nombre, sexo, fechanacimiento, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public webUsuarios.BusinessServiceReference.CompositeType EndGetDataUsingDataContract(System.IAsyncResult result) {
-            return base.Channel.EndGetDataUsingDataContract(result);
+        public string EndCreateUsuario(System.IAsyncResult result) {
+            return base.Channel.EndCreateUsuario(result);
         }
         
-        private System.IAsyncResult OnBeginGetDataUsingDataContract(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            webUsuarios.BusinessServiceReference.CompositeType composite = ((webUsuarios.BusinessServiceReference.CompositeType)(inValues[0]));
-            return this.BeginGetDataUsingDataContract(composite, callback, asyncState);
+        private System.IAsyncResult OnBeginCreateUsuario(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string nombre = ((string)(inValues[0]));
+            string sexo = ((string)(inValues[1]));
+            System.DateTime fechanacimiento = ((System.DateTime)(inValues[2]));
+            return this.BeginCreateUsuario(nombre, sexo, fechanacimiento, callback, asyncState);
         }
         
-        private object[] OnEndGetDataUsingDataContract(System.IAsyncResult result) {
-            webUsuarios.BusinessServiceReference.CompositeType retVal = this.EndGetDataUsingDataContract(result);
+        private object[] OnEndCreateUsuario(System.IAsyncResult result) {
+            string retVal = this.EndCreateUsuario(result);
             return new object[] {
                     retVal};
         }
         
-        private void OnGetDataUsingDataContractCompleted(object state) {
-            if ((this.GetDataUsingDataContractCompleted != null)) {
+        private void OnCreateUsuarioCompleted(object state) {
+            if ((this.CreateUsuarioCompleted != null)) {
                 InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.GetDataUsingDataContractCompleted(this, new GetDataUsingDataContractCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+                this.CreateUsuarioCompleted(this, new CreateUsuarioCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
             }
         }
         
-        public void GetDataUsingDataContractAsync(webUsuarios.BusinessServiceReference.CompositeType composite) {
-            this.GetDataUsingDataContractAsync(composite, null);
+        public void CreateUsuarioAsync(string nombre, string sexo, System.DateTime fechanacimiento) {
+            this.CreateUsuarioAsync(nombre, sexo, fechanacimiento, null);
         }
         
-        public void GetDataUsingDataContractAsync(webUsuarios.BusinessServiceReference.CompositeType composite, object userState) {
-            if ((this.onBeginGetDataUsingDataContractDelegate == null)) {
-                this.onBeginGetDataUsingDataContractDelegate = new BeginOperationDelegate(this.OnBeginGetDataUsingDataContract);
+        public void CreateUsuarioAsync(string nombre, string sexo, System.DateTime fechanacimiento, object userState) {
+            if ((this.onBeginCreateUsuarioDelegate == null)) {
+                this.onBeginCreateUsuarioDelegate = new BeginOperationDelegate(this.OnBeginCreateUsuario);
             }
-            if ((this.onEndGetDataUsingDataContractDelegate == null)) {
-                this.onEndGetDataUsingDataContractDelegate = new EndOperationDelegate(this.OnEndGetDataUsingDataContract);
+            if ((this.onEndCreateUsuarioDelegate == null)) {
+                this.onEndCreateUsuarioDelegate = new EndOperationDelegate(this.OnEndCreateUsuario);
             }
-            if ((this.onGetDataUsingDataContractCompletedDelegate == null)) {
-                this.onGetDataUsingDataContractCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetDataUsingDataContractCompleted);
+            if ((this.onCreateUsuarioCompletedDelegate == null)) {
+                this.onCreateUsuarioCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnCreateUsuarioCompleted);
             }
-            base.InvokeAsync(this.onBeginGetDataUsingDataContractDelegate, new object[] {
-                        composite}, this.onEndGetDataUsingDataContractDelegate, this.onGetDataUsingDataContractCompletedDelegate, userState);
+            base.InvokeAsync(this.onBeginCreateUsuarioDelegate, new object[] {
+                        nombre,
+                        sexo,
+                        fechanacimiento}, this.onEndCreateUsuarioDelegate, this.onCreateUsuarioCompletedDelegate, userState);
+        }
+        
+        public string GetAllUsuarios() {
+            return base.Channel.GetAllUsuarios();
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginGetAllUsuarios(System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetAllUsuarios(callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public string EndGetAllUsuarios(System.IAsyncResult result) {
+            return base.Channel.EndGetAllUsuarios(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetAllUsuarios(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            return this.BeginGetAllUsuarios(callback, asyncState);
+        }
+        
+        private object[] OnEndGetAllUsuarios(System.IAsyncResult result) {
+            string retVal = this.EndGetAllUsuarios(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetAllUsuariosCompleted(object state) {
+            if ((this.GetAllUsuariosCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetAllUsuariosCompleted(this, new GetAllUsuariosCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetAllUsuariosAsync() {
+            this.GetAllUsuariosAsync(null);
+        }
+        
+        public void GetAllUsuariosAsync(object userState) {
+            if ((this.onBeginGetAllUsuariosDelegate == null)) {
+                this.onBeginGetAllUsuariosDelegate = new BeginOperationDelegate(this.OnBeginGetAllUsuarios);
+            }
+            if ((this.onEndGetAllUsuariosDelegate == null)) {
+                this.onEndGetAllUsuariosDelegate = new EndOperationDelegate(this.OnEndGetAllUsuarios);
+            }
+            if ((this.onGetAllUsuariosCompletedDelegate == null)) {
+                this.onGetAllUsuariosCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetAllUsuariosCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetAllUsuariosDelegate, null, this.onEndGetAllUsuariosDelegate, this.onGetAllUsuariosCompletedDelegate, userState);
         }
     }
 }

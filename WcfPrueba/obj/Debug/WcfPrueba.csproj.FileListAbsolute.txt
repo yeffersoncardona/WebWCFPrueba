@@ -5,3 +5,13 @@ C:\Users\YEYO\source\repos\WcfPrueba\obj\Debug\WcfPrueba.csproj.AssemblyReferenc
 C:\Users\YEYO\source\repos\WcfPrueba\obj\Debug\WcfPrueba.csproj.CoreCompileInputs.cache
 C:\Users\YEYO\source\repos\WcfPrueba\obj\Debug\WcfPrueba.dll
 C:\Users\YEYO\source\repos\WcfPrueba\obj\Debug\WcfPrueba.pdb
+C:\Users\YEYO\source\repos\WCFPRUEBA WEB y Servicio\WcfPrueba\bin\WcfPrueba.dll.config
+C:\Users\YEYO\source\repos\WCFPRUEBA WEB y Servicio\WcfPrueba\bin\WcfPrueba.dll
+C:\Users\YEYO\source\repos\WCFPRUEBA WEB y Servicio\WcfPrueba\bin\WcfPrueba.pdb
+C:\Users\YEYO\source\repos\WCFPRUEBA WEB y Servicio\WcfPrueba\bin\Newtonsoft.Json.dll
+C:\Users\YEYO\source\repos\WCFPRUEBA WEB y Servicio\WcfPrueba\bin\Newtonsoft.Json.xml
+C:\Users\YEYO\source\repos\WCFPRUEBA WEB y Servicio\WcfPrueba\obj\Debug\WcfPrueba.csproj.AssemblyReference.cache
+C:\Users\YEYO\source\repos\WCFPRUEBA WEB y Servicio\WcfPrueba\obj\Debug\WcfPrueba.csproj.CoreCompileInputs.cache
+C:\Users\YEYO\source\repos\WCFPRUEBA WEB y Servicio\WcfPrueba\obj\Debug\WcfPrueba.csproj.CopyComplete
+C:\Users\YEYO\source\repos\WCFPRUEBA WEB y Servicio\WcfPrueba\obj\Debug\WcfPrueba.dll
+C:\Users\YEYO\source\repos\WCFPRUEBA WEB y Servicio\WcfPrueba\obj\Debug\WcfPrueba.pdb
