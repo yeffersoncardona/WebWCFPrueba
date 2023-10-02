@@ -30,6 +30,12 @@
   <wsdl:message name="IBusiness_UpdateUsuario_OutputMessage">
     <wsdl:part name="parameters" element="tns:UpdateUsuarioResponse" />
   </wsdl:message>
+  <wsdl:message name="IBusiness_DeleteUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteUsuario" />
+  </wsdl:message>
+  <wsdl:message name="IBusiness_DeleteUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteUsuarioResponse" />
+  </wsdl:message>
   <wsdl:portType name="IBusiness">
     <wsdl:operation name="GetUsuario">
       <wsdl:input wsaw:Action="http://tempuri.org/IBusiness/GetUsuario" message="tns:IBusiness_GetUsuario_InputMessage" />
@@ -46,6 +52,10 @@
     <wsdl:operation name="UpdateUsuario">
       <wsdl:input wsaw:Action="http://tempuri.org/IBusiness/UpdateUsuario" message="tns:IBusiness_UpdateUsuario_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IBusiness/UpdateUsuarioResponse" message="tns:IBusiness_UpdateUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBusiness/DeleteUsuario" message="tns:IBusiness_DeleteUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBusiness/DeleteUsuarioResponse" message="tns:IBusiness_DeleteUsuario_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IBusiness" type="tns:IBusiness">
@@ -79,6 +89,15 @@
     </wsdl:operation>
     <wsdl:operation name="UpdateUsuario">
       <soap:operation soapAction="http://tempuri.org/IBusiness/UpdateUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUsuario">
+      <soap:operation soapAction="http://tempuri.org/IBusiness/DeleteUsuario" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

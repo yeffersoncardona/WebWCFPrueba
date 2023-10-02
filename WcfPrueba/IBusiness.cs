@@ -22,6 +22,8 @@ namespace WcfPrueba
         string GetAllUsuarios();
         [OperationContract]
         string UpdateUsuario(int id, string nombre, string sexo, DateTime fechanacimiento);
+        [OperationContract]
+        string DeleteUsuario(int idusuario);
     }
 
 }

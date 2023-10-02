@@ -192,5 +192,48 @@ namespace WcfPrueba
            
 
         }
+
+        public string DeleteUsuario(int idusuario)
+        {
+            try
+            {
+                string connStr = ConfigurationManager.ConnectionStrings["Myconnection"].ConnectionString;
+                using (SqlConnection lSQLConn = new SqlConnection(connStr))
+                {
+                    string lsResponse = "";
+
+                    DataTable lDS = new DataTable();
+
+                    //...Execution section
+
+                    lSQLConn.Open();
+                    //The CommandType must be StoredProcedure if we are using an ExecuteScalar
+                    using (SqlCommand lSQLCmd = new SqlCommand())
+                    {
+                        lSQLCmd.Connection = lSQLConn;
+                        lSQLCmd.CommandType = CommandType.StoredProcedure;
+                        lSQLCmd.CommandText = "spDeleteUsuario";
+                        lSQLCmd.Parameters.Add(new SqlParameter("@id", idusuario));
+
+                        using (SqlDataAdapter lDA = new SqlDataAdapter(lSQLCmd))
+                        {
+
+                            //Fill the DataAdapter with a SelectCommand
+                            lDA.Fill(lDS);
+                            return "Usuario Eliminado correctamente";
+
+                        }
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                return "Error al eliminar el usuario: "+ex.Message;
+            }
+           
+
+        }
     }
 }

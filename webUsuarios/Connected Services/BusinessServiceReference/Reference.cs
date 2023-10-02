@@ -46,6 +46,14 @@ namespace webUsuarios.BusinessServiceReference {
         System.IAsyncResult BeginUpdateUsuario(int id, string nombre, string sexo, System.DateTime fechanacimiento, System.AsyncCallback callback, object asyncState);
         
         string EndUpdateUsuario(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBusiness/DeleteUsuario", ReplyAction="http://tempuri.org/IBusiness/DeleteUsuarioResponse")]
+        string DeleteUsuario(int idusuario);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IBusiness/DeleteUsuario", ReplyAction="http://tempuri.org/IBusiness/DeleteUsuarioResponse")]
+        System.IAsyncResult BeginDeleteUsuario(int idusuario, System.AsyncCallback callback, object asyncState);
+        
+        string EndDeleteUsuario(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -130,6 +138,25 @@ namespace webUsuarios.BusinessServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class DeleteUsuarioCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public DeleteUsuarioCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public string Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class BusinessClient : System.ServiceModel.ClientBase<webUsuarios.BusinessServiceReference.IBusiness>, webUsuarios.BusinessServiceReference.IBusiness {
         
         private BeginOperationDelegate onBeginGetUsuarioDelegate;
@@ -155,6 +182,12 @@ namespace webUsuarios.BusinessServiceReference {
         private EndOperationDelegate onEndUpdateUsuarioDelegate;
         
         private System.Threading.SendOrPostCallback onUpdateUsuarioCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginDeleteUsuarioDelegate;
+        
+        private EndOperationDelegate onEndDeleteUsuarioDelegate;
+        
+        private System.Threading.SendOrPostCallback onDeleteUsuarioCompletedDelegate;
         
         public BusinessClient() {
         }
@@ -182,6 +215,8 @@ namespace webUsuarios.BusinessServiceReference {
         public event System.EventHandler<GetAllUsuariosCompletedEventArgs> GetAllUsuariosCompleted;
         
         public event System.EventHandler<UpdateUsuarioCompletedEventArgs> UpdateUsuarioCompleted;
+        
+        public event System.EventHandler<DeleteUsuarioCompletedEventArgs> DeleteUsuarioCompleted;
         
         public string GetUsuario(int value) {
             return base.Channel.GetUsuario(value);
@@ -389,6 +424,56 @@ namespace webUsuarios.BusinessServiceReference {
                         nombre,
                         sexo,
                         fechanacimiento}, this.onEndUpdateUsuarioDelegate, this.onUpdateUsuarioCompletedDelegate, userState);
+        }
+        
+        public string DeleteUsuario(int idusuario) {
+            return base.Channel.DeleteUsuario(idusuario);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginDeleteUsuario(int idusuario, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginDeleteUsuario(idusuario, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public string EndDeleteUsuario(System.IAsyncResult result) {
+            return base.Channel.EndDeleteUsuario(result);
+        }
+        
+        private System.IAsyncResult OnBeginDeleteUsuario(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int idusuario = ((int)(inValues[0]));
+            return this.BeginDeleteUsuario(idusuario, callback, asyncState);
+        }
+        
+        private object[] OnEndDeleteUsuario(System.IAsyncResult result) {
+            string retVal = this.EndDeleteUsuario(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnDeleteUsuarioCompleted(object state) {
+            if ((this.DeleteUsuarioCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.DeleteUsuarioCompleted(this, new DeleteUsuarioCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void DeleteUsuarioAsync(int idusuario) {
+            this.DeleteUsuarioAsync(idusuario, null);
+        }
+        
+        public void DeleteUsuarioAsync(int idusuario, object userState) {
+            if ((this.onBeginDeleteUsuarioDelegate == null)) {
+                this.onBeginDeleteUsuarioDelegate = new BeginOperationDelegate(this.OnBeginDeleteUsuario);
+            }
+            if ((this.onEndDeleteUsuarioDelegate == null)) {
+                this.onEndDeleteUsuarioDelegate = new EndOperationDelegate(this.OnEndDeleteUsuario);
+            }
+            if ((this.onDeleteUsuarioCompletedDelegate == null)) {
+                this.onDeleteUsuarioCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnDeleteUsuarioCompleted);
+            }
+            base.InvokeAsync(this.onBeginDeleteUsuarioDelegate, new object[] {
+                        idusuario}, this.onEndDeleteUsuarioDelegate, this.onDeleteUsuarioCompletedDelegate, userState);
         }
     }
 }
