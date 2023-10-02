@@ -38,6 +38,14 @@ namespace webUsuarios.BusinessServiceReference {
         System.IAsyncResult BeginGetAllUsuarios(System.AsyncCallback callback, object asyncState);
         
         string EndGetAllUsuarios(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBusiness/UpdateUsuario", ReplyAction="http://tempuri.org/IBusiness/UpdateUsuarioResponse")]
+        string UpdateUsuario(int id, string nombre, string sexo, System.DateTime fechanacimiento);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IBusiness/UpdateUsuario", ReplyAction="http://tempuri.org/IBusiness/UpdateUsuarioResponse")]
+        System.IAsyncResult BeginUpdateUsuario(int id, string nombre, string sexo, System.DateTime fechanacimiento, System.AsyncCallback callback, object asyncState);
+        
+        string EndUpdateUsuario(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -103,6 +111,25 @@ namespace webUsuarios.BusinessServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class UpdateUsuarioCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public UpdateUsuarioCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public string Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class BusinessClient : System.ServiceModel.ClientBase<webUsuarios.BusinessServiceReference.IBusiness>, webUsuarios.BusinessServiceReference.IBusiness {
         
         private BeginOperationDelegate onBeginGetUsuarioDelegate;
@@ -122,6 +149,12 @@ namespace webUsuarios.BusinessServiceReference {
         private EndOperationDelegate onEndGetAllUsuariosDelegate;
         
         private System.Threading.SendOrPostCallback onGetAllUsuariosCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginUpdateUsuarioDelegate;
+        
+        private EndOperationDelegate onEndUpdateUsuarioDelegate;
+        
+        private System.Threading.SendOrPostCallback onUpdateUsuarioCompletedDelegate;
         
         public BusinessClient() {
         }
@@ -147,6 +180,8 @@ namespace webUsuarios.BusinessServiceReference {
         public event System.EventHandler<CreateUsuarioCompletedEventArgs> CreateUsuarioCompleted;
         
         public event System.EventHandler<GetAllUsuariosCompletedEventArgs> GetAllUsuariosCompleted;
+        
+        public event System.EventHandler<UpdateUsuarioCompletedEventArgs> UpdateUsuarioCompleted;
         
         public string GetUsuario(int value) {
             return base.Channel.GetUsuario(value);
@@ -298,6 +333,62 @@ namespace webUsuarios.BusinessServiceReference {
                 this.onGetAllUsuariosCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetAllUsuariosCompleted);
             }
             base.InvokeAsync(this.onBeginGetAllUsuariosDelegate, null, this.onEndGetAllUsuariosDelegate, this.onGetAllUsuariosCompletedDelegate, userState);
+        }
+        
+        public string UpdateUsuario(int id, string nombre, string sexo, System.DateTime fechanacimiento) {
+            return base.Channel.UpdateUsuario(id, nombre, sexo, fechanacimiento);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginUpdateUsuario(int id, string nombre, string sexo, System.DateTime fechanacimiento, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginUpdateUsuario(id, nombre, sexo, fechanacimiento, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public string EndUpdateUsuario(System.IAsyncResult result) {
+            return base.Channel.EndUpdateUsuario(result);
+        }
+        
+        private System.IAsyncResult OnBeginUpdateUsuario(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int id = ((int)(inValues[0]));
+            string nombre = ((string)(inValues[1]));
+            string sexo = ((string)(inValues[2]));
+            System.DateTime fechanacimiento = ((System.DateTime)(inValues[3]));
+            return this.BeginUpdateUsuario(id, nombre, sexo, fechanacimiento, callback, asyncState);
+        }
+        
+        private object[] OnEndUpdateUsuario(System.IAsyncResult result) {
+            string retVal = this.EndUpdateUsuario(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnUpdateUsuarioCompleted(object state) {
+            if ((this.UpdateUsuarioCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.UpdateUsuarioCompleted(this, new UpdateUsuarioCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void UpdateUsuarioAsync(int id, string nombre, string sexo, System.DateTime fechanacimiento) {
+            this.UpdateUsuarioAsync(id, nombre, sexo, fechanacimiento, null);
+        }
+        
+        public void UpdateUsuarioAsync(int id, string nombre, string sexo, System.DateTime fechanacimiento, object userState) {
+            if ((this.onBeginUpdateUsuarioDelegate == null)) {
+                this.onBeginUpdateUsuarioDelegate = new BeginOperationDelegate(this.OnBeginUpdateUsuario);
+            }
+            if ((this.onEndUpdateUsuarioDelegate == null)) {
+                this.onEndUpdateUsuarioDelegate = new EndOperationDelegate(this.OnEndUpdateUsuario);
+            }
+            if ((this.onUpdateUsuarioCompletedDelegate == null)) {
+                this.onUpdateUsuarioCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnUpdateUsuarioCompleted);
+            }
+            base.InvokeAsync(this.onBeginUpdateUsuarioDelegate, new object[] {
+                        id,
+                        nombre,
+                        sexo,
+                        fechanacimiento}, this.onEndUpdateUsuarioDelegate, this.onUpdateUsuarioCompletedDelegate, userState);
         }
     }
 }
