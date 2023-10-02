@@ -20,8 +20,8 @@ namespace WcfPrueba
         string CreateUsuario(string nombre, string sexo, DateTime fechanacimiento);
         [OperationContract]
         string GetAllUsuarios();
-
-        
+        [OperationContract]
+        string UpdateUsuario(int id, string nombre, string sexo, DateTime fechanacimiento);
     }
 
 }

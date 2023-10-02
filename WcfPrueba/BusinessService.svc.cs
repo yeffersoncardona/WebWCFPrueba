@@ -99,7 +99,7 @@ namespace WcfPrueba
 
                             //Fill the DataAdapter with a SelectCommand
                             lDA.Fill(lDS);
-                            return ConvertDataTableToJson(lDS);
+                            
 
                         }
                     }
@@ -145,6 +145,51 @@ namespace WcfPrueba
                 }
 
             }
+
+        }
+        public string UpdateUsuario(int id,string nombre, string sexo, DateTime fechanacimiento)
+        {
+            try
+            {
+                string connStr = ConfigurationManager.ConnectionStrings["Myconnection"].ConnectionString;
+                using (SqlConnection lSQLConn = new SqlConnection(connStr))
+                {
+                    string lsResponse = "";
+
+                    DataTable lDS = new DataTable();
+
+                    //...Execution section
+
+                    lSQLConn.Open();
+                    //The CommandType must be StoredProcedure if we are using an ExecuteScalar
+                    using (SqlCommand lSQLCmd = new SqlCommand())
+                    {
+                        lSQLCmd.Connection = lSQLConn;
+                        lSQLCmd.CommandType = CommandType.StoredProcedure;
+                        lSQLCmd.CommandText = "spUpdateUsuario";
+                        lSQLCmd.Parameters.Add(new SqlParameter("@nombre", nombre));
+                        lSQLCmd.Parameters.Add(new SqlParameter("@sexo", sexo));
+                        lSQLCmd.Parameters.Add(new SqlParameter("@id", id));
+                        lSQLCmd.Parameters.Add(new SqlParameter("@fechanacimiento", fechanacimiento));
+
+                        using (SqlDataAdapter lDA = new SqlDataAdapter(lSQLCmd))
+                        {
+
+                            //Fill the DataAdapter with a SelectCommand
+                            lDA.Fill(lDS);
+                            return "Usuario actualizado con exíto";
+
+                        }
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                return "Ocurrio un error actualizando :"+ex.Message;
+            }
+           
 
         }
     }

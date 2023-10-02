@@ -33,17 +33,7 @@ namespace webUsuarios
             }
 
             
-           
-
-            //    //DataTable dtusuario = (DataTable)JsonConvert.DeserializeObject(consulta, typeof(DataTable));
-            //    //GridView1.DataSource = dtusuario;
-            //    GridView1.DataSource = usuario;
-            //    GridView1.DataBind();
-            //    GridView1.Visible = true;
-            //    reference.Close();
-            //}
-
-            //GridView1.Visible = true;
+          
         }
     }
 }
